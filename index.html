@@ -4,16 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHero Tube</title>
+    <link rel="shortcut icon" href="./image/Logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .inter{
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <header>
+        <nav class="p-3">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                  <img src="./image/Logo.png" alt="">
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                  <button class="btn">Sort By View</button>
+                </div>
+                <div class="navbar-end">
+                  <a href="./blog.html" class="btn bg-[#FF1F3D] text-white hover:text-black">Blog</a>
+                </div>
+              </div>
+        </nav>
 
     </header>
+    <hr>
     <main>
+        <!-- tabs section -->
+        <section class="flex justify-center p-8">
+            <div id="tab-container" class="tabs gap-2">
+                <!-- <a class="tab btn">Tab 1</a> 
+                <a class="tab btn">Tab 2</a> 
+                <a class="tab btn">Tab 3</a> -->
+            </div>
+        </section>
+
+        <section>
+            <div id="card-container" class="">
+               <!--  <div class="card w-96 bg-base-100 shadow-xl">
+                    <figure>
+                      <img
+                        src="https://i.ibb.co/M23fhxm/unsplash-Eh-Tc-C9s-YXsw.png"
+                        alt="Shoes"
+                      />
+                    </figure>
+                    <div class="flex px-3 gap-3 py-2">
+                        <div class="avatar">
+                            <div class="w-14 h-12 rounded-full">
+                                <img
+                                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="card-title inter font-semibold text-lg text-[#171717]">
+                                Biden Pledges Nearly $3 Billion To Ukraine
+                            </h2>
+                            <div class="inter text-sm font-normal">
+                                <h6>Jimmy Dane</h6>
+                                <small>91k Views</small>
+                             </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>    
+        </section>
 
     </main>
     <footer>
-        
+
     </footer>
+    <!-- JavaScript file -->
+    <script src="index.js"></script>
 </body>
 </html>

@@ -10,8 +10,8 @@ const tubeCategory = async() => {
         `
         tabContainer.appendChild(div)
     })
-
 }
+// sort by view
 
 // tab click data Show
 const newsType = async(categoryId) => {
@@ -80,11 +80,8 @@ const newsType = async(categoryId) => {
             cardContainer.appendChild(div)
         }) 
     }
-
-
-    
 }
-
+// calculate the given seconds
 function converter(sec){
     const hr = Math.floor(sec / 3600)
     const extraSec = sec % 3600

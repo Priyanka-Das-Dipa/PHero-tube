@@ -1,18 +1,19 @@
+
+// showing the data using category
 const tubeCategory = async() => {
     const response = await fetch('https://openapi.programming-hero.com/api/videos/categories')
     const data = await response.json()
     console.log(data)
     const tabContainer = document.getElementById('tab-container')
     data.data.slice(0, 4).forEach((category) => {
+        
         const div = document.createElement('div')
         div.innerHTML = `
-        <a onclick="newsType('${category.category_id}')" class="tab btn">${category.category}</a>
+        <a id="tabBtn" onclick="newsType('${category.category_id}')" class="tab btn">${category.category}</a>
         `
         tabContainer.appendChild(div)
     })
 }
-// sort by view
-
 // tab click data Show
 const newsType = async(categoryId) => {
     const response = await fetch(`
@@ -21,22 +22,29 @@ const newsType = async(categoryId) => {
     const data = await response.json()
     const cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = ''
+    
+    const messageContainer = document.getElementById('message-container')
+    if (messageContainer) {
+        messageContainer.innerHTML = '';
+    }
 
     if(data?.data?.length === 0){
-        const messageContainer = document.getElementById('message-container');
         if (messageContainer) {
-        const div = document.createElement('div');
-        messageContainer.innerHTML = `
-            <div class="flex justify-center py-5">
-            <img src="./image/Icon.png" alt="">
-            </div>
-            <p class="text-5xl font-semibold py-2">Oops!! Sorry, there is no <br> content here</p>
-        `;
-        messageContainer.appendChild(div);
+
+            const div = document.createElement('div');
+            messageContainer.innerHTML = `
+                <div class="flex justify-center py-5">
+                <img src="./image/Icon.png" alt="">
+                </div>
+                <p class="text-5xl font-semibold py-2">Oops!! Sorry, there is no <br> content here</p>
+            `;
+            messageContainer.appendChild(div);
+
         }
     }
     else{
         data?.data?.forEach((videos) => {
+            
             const div = document.createElement('div')
             const {hr, min} = converter(videos?.others?.posted_date)
     
@@ -87,9 +95,7 @@ function converter(sec){
     const extraSec = sec % 3600
     const min = Math.floor(extraSec / 60)
     return{hr, min}
-
 }
-
 tubeCategory()
 newsType('1000')
 

@@ -58,7 +58,6 @@ const newsType = async(categoryId) => {
         </div>
         `
         cardContainer.appendChild(div)
-
     }) 
 
 

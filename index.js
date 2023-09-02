@@ -1,4 +1,3 @@
-
 // showing the data using category
 const tubeCategory = async() => {
     const response = await fetch('https://openapi.programming-hero.com/api/videos/categories')
@@ -27,6 +26,8 @@ const newsType = async(categoryId) => {
     if (messageContainer) {
         messageContainer.innerHTML = '';
     }
+
+    // data.data.sort((a, b) => b.others.views - a.others.views);
 
     if(data?.data?.length === 0){
         if (messageContainer) {
@@ -96,6 +97,7 @@ function converter(sec){
     const min = Math.floor(extraSec / 60)
     return{hr, min}
 }
+
 tubeCategory()
 newsType('1000')
 

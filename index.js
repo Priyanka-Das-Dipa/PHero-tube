@@ -1,3 +1,6 @@
+// global variable 
+let initialDataShow = '1000';
+
 // showing the data using category
 const tubeCategory = async() => {
     const response = await fetch('https://openapi.programming-hero.com/api/videos/categories')
@@ -14,20 +17,21 @@ const tubeCategory = async() => {
     })
 }
 // tab click data Show
-const newsType = async(categoryId) => {
+ 
+const newsType = async(categoryId, sortedData) => {
     const response = await fetch(`
     https://openapi.programming-hero.com/api/videos/category/${categoryId}
     `);
     const data = await response.json()
+
+    initialDataShow = categoryId;
+    
     const cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = ''
     const messageContainer = document.getElementById('message-container')
     if (messageContainer) {
         messageContainer.innerHTML = '';
     }
-
-    // data.data.sort((a, b) => b.others.views - a.others.views);
-
     if(data?.data?.length === 0){
         if (messageContainer) {
 
@@ -43,6 +47,16 @@ const newsType = async(categoryId) => {
         }
     }
     else{
+        if(sortedData){
+        
+            data?.data.sort((a, b) => {
+                const data1 = parseInt(a.others.views.replace('K', '')) * 1000;
+                const data2 = parseInt(b.others.views.replace('K', '')) * 1000;
+                return data2 - data1;
+                
+            });
+        }
+        data.data.innerHTML=''        
         data?.data?.forEach((videos) => {
             
             const div = document.createElement('div')
@@ -88,7 +102,13 @@ const newsType = async(categoryId) => {
             cardContainer.appendChild(div)
         }) 
     }
+
+
 }
+// added eventListener to the button
+document.getElementById('sort-button').addEventListener('click', function () {
+    newsType(initialDataShow, true)
+});
 // calculate the given seconds
 function converter(sec){
     const hr = Math.floor(sec / 3600)
@@ -96,23 +116,9 @@ function converter(sec){
     const min = Math.floor(extraSec / 60)
     return{hr, min}
 }
-// sort by view
-const sortByView = async() => {
-    const response = await fetch('https://openapi.programming-hero.com/api/videos/categories');
-    const data = await response.json();
-    data.data.sort((a, b) => {
-        const x = parseInt(a.others?.views)
-        const y = parseInt(a.others?.views) 
-        return y - x
-    })
-    // const firstCategoryId = data.data[0].category_id;
-
-    newsType();
-    // newsType()
-
-}
 
 tubeCategory()
 newsType('1000')
+
 
   

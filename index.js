@@ -3,6 +3,7 @@ const tubeCategory = async() => {
     const response = await fetch('https://openapi.programming-hero.com/api/videos/categories')
     const data = await response.json()
     console.log(data)
+    sortData = data.data
     const tabContainer = document.getElementById('tab-container')
     data.data.slice(0, 4).forEach((category) => {
         
@@ -19,6 +20,9 @@ const newsType = async(categoryId) => {
     https://openapi.programming-hero.com/api/videos/category/${categoryId}
     `);
     const data = await response.json()
+
+    data.data.sort((a, b) => b.others.views - a.others.views);
+
     const cardContainer = document.getElementById('card-container')
     cardContainer.innerHTML = ''
     

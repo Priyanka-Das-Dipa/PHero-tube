@@ -55,8 +55,7 @@ const newsType = async(categoryId, sortedData) => {
                 return data2 - data1;
                 
             });
-        }
-        data.data.innerHTML=''        
+        }        
         data?.data?.forEach((videos) => {
             
             const div = document.createElement('div')
